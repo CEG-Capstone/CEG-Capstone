@@ -29,38 +29,3 @@ export function logWarning(...warnings) {
 }
 
 console.warn = logWarning;
-
-export const shuffle = array => {
-    let currentIndex = array.length;
-    let temporaryValue;
-    let randomIndex;
-    const temp = array;
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        temp[currentIndex] = array[randomIndex];
-        temp[randomIndex] = temporaryValue;
-    }
-    return temp;
-};
-
-export const cleaner = (name, min, max, size) => {
-    const data = [];
-    for (let i = 0; i < size; i += 1) {
-        const temp = Math.random() * (max - min) + min;
-        const obj = {};
-        obj[name] = temp;
-        data.push(obj);
-    }
-    return data;
-};
-
-export const cleanerFloat = (min, max) => {
-    const decimalPlaces = 9;
-    const rand = Math.random() * (max - min) + min;
-    // eslint-disable-next-line no-restricted-properties
-    const power = Math.pow(10, decimalPlaces);
-    const temp = Math.floor(rand * power) / power;
-    return temp;
-};
